@@ -1,0 +1,88 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script>
+        function mydiff(date1, date2, interval) {
+            var second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24, week = day * 7;
+            date1 = new Date(date1);
+            date2 = new Date(date2);
+            var timediff = date2 - date1;
+            if (isNaN(timediff)) return NaN;
+            switch (interval) {
+                case "years": return date2.getFullYear() - date1.getFullYear();
+                case "months": return (
+                    (date2.getFullYear() * 12 + date2.getMonth())
+                    -
+                    (date1.getFullYear() * 12 + date1.getMonth())
+                );
+                case "weeks": return Math.floor(timediff / week);
+                case "days": return Math.floor(timediff / day);
+                case "hours": return Math.floor(timediff / hour);
+                case "minutes": return Math.floor(timediff / minute);
+                case "seconds": return Math.floor(timediff / second);
+                default: return undefined;
+            }
+        }
+    </script>
+
+   
+
+
+</head>
+<body>
+    <input id="date1" />
+    <input id="date2" />
+    <button onclick="mydiff(date1, date2, interval)()">Calculate dfference</button>
+</body>
+</html>
+
+<
+@*
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="jquery.datetimepicker.min.jss" />
+    <script src="~/js/jquery.js"></script>
+    <script src="~/js/jquery.datetimepicker.full.js"></script>
+    <script>
+        $("date1").datetimepicker({
+            timepicker:false,
+            formet:'y-m-d'
+        });
+    </script>
+    <script>
+        $("date2").datetimepicker({
+            timepicker: false,
+            formet: 'y-m-d'
+        });
+
+        function:calcDiff(){
+            var date1=new Date($("date1").val());
+            var date2 = new Date($("date2").val());
+            var timedifference=date2.getTime()-date1.getTime();
+            alert(timedifference);
+            //get days
+            var milliSecondsInOneSecond=1000;
+        
+    </script>
+
+</head>
+<body>
+    <input id="date1" />
+    <input id="date2" />
+
+
+    <button onclick="calcDiff()">Calculate dfference</button>
+</body>
+</html>
+*@

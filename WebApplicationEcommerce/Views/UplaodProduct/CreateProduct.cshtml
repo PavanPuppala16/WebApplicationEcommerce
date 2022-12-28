@@ -1,0 +1,68 @@
+﻿@using WebApplicationEcommerce.Models;
+@model Products
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreateProduct</title>
+</head>
+<body>
+
+<h4>Products</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+          @using (Html.BeginForm())
+          {
+                @Html.AntiForgeryToken()
+        <form asp-action="CreateProduct">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                        <label>Id<span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(model => model.Id, new { @class = "form-control", placeholder="Enter SNAME" })
+                        @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                        <label>Description<span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(model => model.Description, new { @class = "form-control", placeholder="Enter SNAME" })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                        <label>Price<span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(model => model.Price, new { @class = "form-control", placeholder="Enter SNAME" })
+                        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                        <label>Size<span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(model => model.Size, new { @class = "form-control", placeholder="Enter SNAME" })
+                        @Html.ValidationMessageFor(model => model.Size, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                        <label>ManufactoringDate<span class="text-danger">*</span></label>
+                        @Html.EditorFor(model => model.ManufactoringDate, new { htmlAttributes = new { @class = "form-control input-md", @placeholder = "DOB"} })
+                        @Html.ValidationMessageFor(model => model.ManufactoringDate, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                        <label>ExpirationDate<span class="text-danger">*</span></label>
+                        @Html.EditorFor(model => model.ExpirationDate, new { htmlAttributes = new { @class = "form-control input-md", @placeholder = "DOB"} })
+                        @Html.ValidationMessageFor(model => model.ExpirationDate, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+        }
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</body>
+</html>
